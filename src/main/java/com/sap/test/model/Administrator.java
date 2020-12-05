@@ -3,7 +3,7 @@ package com.sap.test.model;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "administrators")
 public class Administrator {
 
     @Id
@@ -11,18 +11,18 @@ public class Administrator {
     private Integer id;
 
     private String name;
-    private Integer catalogue_id;
-    private Integer partner_id;
+    @ManyToOne
+    private Catalogue catalogue_id;
     private String password;
-    private Integer product_id;
 
-    public Administrator(){
+    protected Administrator(){
 
     }
 
-    public Administrator(String name, String password){
+    public Administrator(Integer id,String name, String password){
         this.name = name;
         this.password = password;
+        this.id = id;
     }
 
 
@@ -36,11 +36,11 @@ public class Administrator {
         this.id = id;
     }
 
-    public Integer getCatalogue_id() {
+    public Catalogue getCatalogue_id() {
         return catalogue_id;
     }
 
-    public void setCatalogue_id(Integer catalogue_id) {
+    public void setCatalogue_id(Catalogue catalogue_id) {
         this.catalogue_id = catalogue_id;
     }
 
@@ -50,22 +50,6 @@ public class Administrator {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Integer getPartner_id() {
-        return partner_id;
-    }
-
-    public void setPartner_id(Integer partner_id) {
-        this.partner_id = partner_id;
-    }
-
-    public Integer getProduct_id() {
-        return product_id;
-    }
-
-    public void setProduct_id(Integer product_id) {
-        this.product_id = product_id;
     }
 
     public String getPassword() {

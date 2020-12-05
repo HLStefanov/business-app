@@ -1,28 +1,28 @@
 package com.sap.test.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-@Entity
+@Entity(name = "trade_partners")
 public class TradePartner {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer partner_id;
-   private Integer catalogue_id;
-   private String partner_name;
-   private String password;
-   private Integer product_id;
+    private String partner_name;
+    private String password;
+    @ManyToOne
+    private Administrator administrator;
+    @ManyToOne
+    private Catalogue catalogue;
 
-    public TradePartner(){
+    protected TradePartner() {
 
     }
 
-    public TradePartner(String partner_name, String password){
+    public TradePartner(Integer partner_id, String partner_name, String password) {
         this.partner_name = partner_name;
         this.password = password;
+        this.partner_id = partner_id;
     }
 
     public String getPassword() {
@@ -49,11 +49,19 @@ public class TradePartner {
         this.partner_id = partner_id;
     }
 
-    public Integer getCatalogue_id() {
-        return catalogue_id;
+    public Catalogue getCatalogue() {
+        return catalogue;
     }
 
-    public void setCatalogue_id(Integer catalogue_id) {
-        this.catalogue_id = catalogue_id;
+    public void setCatalogue(Catalogue catalogue) {
+        this.catalogue = catalogue;
+    }
+
+    public Administrator getAdministrator() {
+        return administrator;
+    }
+
+    public void setAdministrator(Administrator administrator) {
+        this.administrator = administrator;
     }
 }
