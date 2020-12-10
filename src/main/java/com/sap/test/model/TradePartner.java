@@ -6,6 +6,7 @@ import javax.persistence.*;
 @Table(name = "trade_partners")
 public class TradePartner {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer partner_id;

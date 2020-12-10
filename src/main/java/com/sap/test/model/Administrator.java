@@ -8,6 +8,7 @@ import javax.persistence.*;
 @Table(name = "administrators")
 public class Administrator {
 
+
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
