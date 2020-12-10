@@ -3,12 +3,15 @@ package com.sap.test.model;
 import javax.persistence.*;
 
 @Entity(name = "trade_partners")
+@Table(name = "trade_partners")
 public class TradePartner {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer partner_id;
+    @Column(nullable = false, length = 50)
     private String partner_name;
+    @Column(nullable = false, length = 50)
     private String password;
     @ManyToOne
     private Administrator administrator;

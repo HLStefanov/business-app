@@ -1,18 +1,18 @@
 package com.sap.test.model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity(name = "catalogue")
+@Table(name = "catalogue")
 public class Catalogue {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer catalogue_id;
+    @Column(nullable = false)
     private String name;
+    @Column(nullable = false)
     private double price;
 
     protected Catalogue(){

@@ -1,18 +1,22 @@
 package com.sap.test.model;
 
 
+
 import javax.persistence.*;
 
 @Entity(name = "administrators")
+@Table(name = "administrators")
 public class Administrator {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(nullable = false, length = 50)
     private String name;
     @ManyToOne
     private Catalogue catalogue_id;
+    @Column(nullable = false, length = 50)
     private String password;
 
     protected Administrator(){

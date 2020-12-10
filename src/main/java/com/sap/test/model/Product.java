@@ -4,13 +4,16 @@ package com.sap.test.model;
 import javax.persistence.*;
 
 @Entity(name = "products")
+@Table(name = "products")
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer product_id;
 
+    @Column(nullable = false)
     private String product_name;
+
     private double product_price;
 
     @ManyToOne
@@ -25,8 +28,7 @@ public class Product {
 
     protected Product(){ }
 
-    public Product(Integer product_id, String product_name, double price){
-        this.product_id = product_id;
+    public Product(String product_name, double price){
         this.product_name = product_name;
         this.product_price = price;
     }
@@ -77,5 +79,13 @@ public class Product {
 
     public void setProduct_name(String product_name) {
         this.product_name = product_name;
+    }
+
+    public Administrator getAdministrator() {
+        return administrator;
+    }
+
+    public void setAdministrator(Administrator administrator) {
+        this.administrator = administrator;
     }
 }
