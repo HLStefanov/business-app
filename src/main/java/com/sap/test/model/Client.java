@@ -9,8 +9,8 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer client_id;
-    @Column(nullable = false, length = 50)
-    private String client_name;
+    @Column(nullable = false,name = "client_id", length = 50)
+    private String name;
     @Column(nullable = false, length = 50)
     private String password;
     @ManyToOne
@@ -20,9 +20,8 @@ public class Client {
 
     }
 
-    public Client(Integer client_id, String client_name, String password){
-        this.client_id = client_id;
-        this.client_name = client_name;
+    public Client(String name, String password){
+        this.name = name;
         this.password = password;
 
     }
@@ -43,12 +42,12 @@ public class Client {
         this.password = password;
     }
 
-    public String getClient_name() {
-        return client_name;
+    public String getName() {
+        return name;
     }
 
-    public void setClient_name(String client_name) {
-        this.client_name = client_name;
+    public void setName(String client_name) {
+        this.name = client_name;
     }
 
     public Integer getClient_id() {

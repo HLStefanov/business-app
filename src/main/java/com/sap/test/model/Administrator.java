@@ -23,10 +23,9 @@ public class Administrator {
 
     }
 
-    public Administrator(Integer id,String name, String password){
+    public Administrator(String name, String password){
         this.name = name;
         this.password = password;
-        this.id = id;
     }
 
 

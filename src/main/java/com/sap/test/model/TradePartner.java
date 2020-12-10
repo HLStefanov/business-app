@@ -9,8 +9,8 @@ public class TradePartner {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer partner_id;
-    @Column(nullable = false, length = 50)
-    private String partner_name;
+    @Column(nullable = false, length = 50, name = "partner_name")
+    private String name;
     @Column(nullable = false, length = 50)
     private String password;
     @ManyToOne
@@ -22,10 +22,10 @@ public class TradePartner {
 
     }
 
-    public TradePartner(Integer partner_id, String partner_name, String password) {
-        this.partner_name = partner_name;
+    public TradePartner(String name, String password) {
+        this.name = name;
         this.password = password;
-        this.partner_id = partner_id;
+
     }
 
     public String getPassword() {
@@ -36,12 +36,12 @@ public class TradePartner {
         this.password = password;
     }
 
-    public String getPartner_name() {
-        return partner_name;
+    public String getName() {
+        return name;
     }
 
-    public void setPartner_name(String partner_name) {
-        this.partner_name = partner_name;
+    public void setName(String partner_name) {
+        this.name = partner_name;
     }
 
     public Integer getPartner_id() {

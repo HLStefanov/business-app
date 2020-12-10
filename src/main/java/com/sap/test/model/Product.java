@@ -11,10 +11,11 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer product_id;
 
-    @Column(nullable = false)
-    private String product_name;
+    @Column(nullable = false, name = "product_name")
+    private String name;
 
-    private double product_price;
+    @Column(nullable = false, name = "product_price")
+    private double price;
 
     @ManyToOne
     private Administrator administrator;
@@ -28,9 +29,9 @@ public class Product {
 
     protected Product(){ }
 
-    public Product(String product_name, double price){
-        this.product_name = product_name;
-        this.product_price = price;
+    public Product(String name, double price){
+        this.name = name;
+        this.price = price;
     }
 
     public Integer getProduct_id() {
@@ -65,20 +66,20 @@ public class Product {
         this.catalogue = catalogue_id;
     }
 
-    public double getProduct_price() {
-        return product_price;
+    public double getPrice() {
+        return price;
     }
 
-    public void setProduct_price(double product_price) {
-        this.product_price = product_price;
+    public void setPrice(double product_price) {
+        this.price = product_price;
     }
 
-    public String getProduct_name() {
-        return product_name;
+    public String getName() {
+        return name;
     }
 
-    public void setProduct_name(String product_name) {
-        this.product_name = product_name;
+    public void setName(String product_name) {
+        this.name = product_name;
     }
 
     public Administrator getAdministrator() {
