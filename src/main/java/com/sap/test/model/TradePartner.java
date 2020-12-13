@@ -1,23 +1,32 @@
 package com.sap.test.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity(name = "trade_partners")
-@Table(name = "trade_partners")
 public class TradePartner {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer partner_id;
-    @Column(nullable = false, length = 50, name = "partner_name")
+    private Integer id;
+    @Column(nullable = false, length = 50)
     private String name;
     @Column(nullable = false, length = 50)
     private String password;
-    @ManyToOne
-    private Administrator administrator;
-    @ManyToOne
-    private Catalogue catalogue;
+
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id")
+    private List<Client> clientList;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id")
+    private List<Product> productList;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id")
+    private List<Catalogue> catalogueList;
 
     protected TradePartner() {
 
@@ -45,27 +54,35 @@ public class TradePartner {
         this.name = partner_name;
     }
 
-    public Integer getPartner_id() {
-        return partner_id;
+    public Integer getId() {
+        return id;
     }
 
-    public void setPartner_id(Integer partner_id) {
-        this.partner_id = partner_id;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public Catalogue getCatalogue() {
-        return catalogue;
+    public List<Catalogue> getCatalogueList() {
+        return catalogueList;
     }
 
-    public void setCatalogue(Catalogue catalogue) {
-        this.catalogue = catalogue;
+    public void setCatalogueList(List<Catalogue> catalogueList) {
+        this.catalogueList = catalogueList;
     }
 
-    public Administrator getAdministrator() {
-        return administrator;
+    public List<Product> getProductList() {
+        return productList;
     }
 
-    public void setAdministrator(Administrator administrator) {
-        this.administrator = administrator;
+    public void setProductList(List<Product> productList) {
+        this.productList = productList;
+    }
+
+    public List<Client> getClientList() {
+        return clientList;
+    }
+
+    public void setClientList(List<Client> clientList) {
+        this.clientList = clientList;
     }
 }

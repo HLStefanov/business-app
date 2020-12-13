@@ -10,7 +10,7 @@ export default class Bar extends React.Component{
                 <ul className='list'>
                     <li className='element'><Link className='link' to={'./Home'}>Home</Link></li>
                     <li className='element'><Link className='link' to={'./Products'}>Products</Link></li>
-                    <li className='element'><Link className='link' to={'/Login'}>Login</Link></li>
+                    <li className='element'><Link className='link' to={'../login/Login'}>Login</Link></li>
                     <li className='element'><Link className='link' to={'./Logger'}>Register</Link></li>
                 </ul>
             </div>

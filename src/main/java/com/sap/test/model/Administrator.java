@@ -1,11 +1,11 @@
 package com.sap.test.model;
 
 
-
 import javax.persistence.*;
+import java.util.List;
+import java.util.Objects;
 
 @Entity(name = "administrators")
-@Table(name = "administrators")
 public class Administrator {
 
 
@@ -15,10 +15,26 @@ public class Administrator {
 
     @Column(nullable = false, length = 50)
     private String name;
-    @ManyToOne
-    private Catalogue catalogue_id;
+
     @Column(nullable = false, length = 50)
     private String password;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id")
+    private List<Product> productList;
+
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id")
+    private List<TradePartner> partners;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id")
+    private List<Catalogue> catalogueList;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id")
+    private List<Client> clients;
 
     protected Administrator(){
 
@@ -40,14 +56,6 @@ public class Administrator {
         this.id = id;
     }
 
-    public Catalogue getCatalogue_id() {
-        return catalogue_id;
-    }
-
-    public void setCatalogue_id(Catalogue catalogue_id) {
-        this.catalogue_id = catalogue_id;
-    }
-
     public String getName() {
         return name;
     }
@@ -62,5 +70,37 @@ public class Administrator {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Product> getProductList() {
+        return productList;
+    }
+
+    public void setProductList(List<Product> productList) {
+        this.productList = productList;
+    }
+
+    public List<TradePartner> getPartners() {
+        return partners;
+    }
+
+    public void setPartners(List<TradePartner> partners) {
+        this.partners = partners;
+    }
+
+    public List<Client> getClients() {
+        return clients;
+    }
+
+    public void setClients(List<Client> clients) {
+        this.clients = clients;
+    }
+
+    public List<Catalogue> getCatalogueList() {
+        return catalogueList;
+    }
+
+    public void setCatalogueList(List<Catalogue> catalogues) {
+        this.catalogueList = catalogues;
     }
 }
