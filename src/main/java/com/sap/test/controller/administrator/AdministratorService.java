@@ -4,7 +4,6 @@ import com.sap.test.model.*;
 import com.sap.test.repositories.*;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -36,14 +35,14 @@ public class AdministratorService {
 
     public List<Product> getProducts(){
         List<Product> products;
-        products = repository.getProductList().orElse(new ArrayList<>());
+        products = repository.getProducts().orElse(new ArrayList<>());
 
         return products;
     }
 
     public Product getProductByName(String name){
 
-        Optional<List<Product>> optional = repository.getProductList();
+        Optional<List<Product>> optional = repository.getProducts();
         List <Product> productList = optional.orElse(new ArrayList<>());
 
         if(!productList.isEmpty()){
@@ -57,7 +56,7 @@ public class AdministratorService {
 
     public Product getProductById(Integer id){
 
-        Optional<List<Product>> optional = repository.getProductList();
+        Optional<List<Product>> optional = repository.getProducts();
         List <Product> productList = optional.orElse(new ArrayList<>());
 
         if(!productList.isEmpty()){
@@ -129,7 +128,7 @@ public class AdministratorService {
     }
 
     public List<Catalogue> getCatalogues(){
-       return  repository.getCatalogueList();
+       return  repository.getCatalogues();
     }
 
     public Catalogue getCatalogueByName(String name){
@@ -162,10 +161,10 @@ public class AdministratorService {
     public void addProduct(String name,double price){
 
         List<Product> products;
-        products = repository.getProductList().orElse(new ArrayList<>());
+        products = repository.getProducts().orElse(new ArrayList<>());
 
         products.add(new Product(name,price));
-        repository.setProductList(products);
+        repository.setProducts(products);
     }
 
     public void addPartner(String name,String password){
@@ -174,25 +173,25 @@ public class AdministratorService {
         partners = repository.getPartners().orElse(new ArrayList<>());
 
         partners.add(new TradePartner(name,password));
-        repository.setPartnersList(partners);
+        repository.setPartners(partners);
     }
 
     public void addClient(String name,double password){
 
         List<Product> products;
-        products = repository.getProductList().orElse(new ArrayList<>());
+        products = repository.getProducts().orElse(new ArrayList<>());
 
         products.add(new Product(name,password));
-        repository.setProductList(products);
+        repository.setProducts(products);
     }
 
     public void addCatalogue(Catalogue catalogue){
 
         List<Catalogue> products;
-        products = repository.getCatalogueList();
+        products = repository.getCatalogues();
 
         products.add(catalogue);
-        repository.setCatalogueList(catalogue);
+        repository.setCatalogues(products);
     }
 
     public void removeProduct(String name){

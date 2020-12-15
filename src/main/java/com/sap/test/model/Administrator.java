@@ -3,7 +3,6 @@ package com.sap.test.model;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Objects;
 
 @Entity(name = "administrators")
 public class Administrator {
@@ -21,7 +20,7 @@ public class Administrator {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "id")
-    private List<Product> productList;
+    private List<Product> products;
 
 
     @OneToMany(cascade = CascadeType.ALL)
@@ -30,7 +29,7 @@ public class Administrator {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "id")
-    private List<Catalogue> catalogueList;
+    private List<Catalogue> catalogues;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "id")
@@ -72,12 +71,12 @@ public class Administrator {
         this.password = password;
     }
 
-    public List<Product> getProductList() {
-        return productList;
+    public List<Product> getProducts() {
+        return products;
     }
 
-    public void setProductList(List<Product> productList) {
-        this.productList = productList;
+    public void setProducts(List<Product> productList) {
+        this.products = productList;
     }
 
     public List<TradePartner> getPartners() {
@@ -96,11 +95,11 @@ public class Administrator {
         this.clients = clients;
     }
 
-    public List<Catalogue> getCatalogueList() {
-        return catalogueList;
+    public List<Catalogue> getCatalogues() {
+        return catalogues;
     }
 
-    public void setCatalogueList(List<Catalogue> catalogues) {
-        this.catalogueList = catalogues;
+    public void setCatalogues(List<Catalogue> catalogues) {
+        this.catalogues = catalogues;
     }
 }

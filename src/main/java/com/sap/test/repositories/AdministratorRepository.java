@@ -11,19 +11,19 @@ public interface AdministratorRepository extends JpaRepository <Administrator, I
 
     Optional<Administrator> findAdministratorByName(String name);
 
-    Optional<List<Product>> getProductList();
+    Optional<List<Product>> getProducts();
 
     Optional<List<TradePartner>> getPartners();
 
     List<Client> getClients();
 
-    List<Catalogue> getCatalogueList();
+    List<Catalogue> getCatalogues();
 
-    void setProductList(List<Product> productList);
+    void setProducts(List<Product> productList);
 
-    void setPartnersList(List<TradePartner> partners);
+    void setPartners(List<TradePartner> partners);
 
-    void setCatalogueList(Catalogue catalogue);
+    void setCatalogues(List<Catalogue> catalogues);
 
 
 }
